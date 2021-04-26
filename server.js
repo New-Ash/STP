@@ -8,11 +8,10 @@ const cookieParser = require('cookie-parser')
 const professionals = require('./Routes/professionals');
 const PORT=process.env.PORT || 8000;
 const customerroute = require('./Routes/profileretrieve') ;
+const path= require('path');
 // const customerupdateroute = require('./Routes/update-profile');
 const professionalroute = require('./Routes/profileretrieve_prof') ;
-let corsOptions = {
-  origin: 'http://localhost:4000/' 
-};
+
 
 
 
