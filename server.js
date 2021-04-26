@@ -6,7 +6,7 @@ const routeURL = require('./Routes/route')
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const professionals = require('./Routes/professionals');
-const PORT=process.env.PORT || 4000;
+const PORT=process.env.PORT || 8000;
 const customerroute = require('./Routes/profileretrieve') ;
 // const customerupdateroute = require('./Routes/update-profile');
 const professionalroute = require('./Routes/profileretrieve_prof') ;
@@ -32,6 +32,9 @@ mongoose.connect(process.env.ACCESS_FINAL, () => console.log('database connected
 
 app.use(express.json())
 app.use(cookieParser())
+app.get('*', (req,res) => {
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+})
 app.use(cors());
 app.use('/profileretrieve',customerroute)
 // app.use('/update-profile',customerupdateroute)
@@ -44,4 +47,5 @@ app.use('/api2',routes2);
 app.use('/api3',routes3);
 app.use('/api4',routes4);
 app.use('/api5',routes5);
+
 app.listen(PORT,console.log(`Server open at  ${PORT}`));
